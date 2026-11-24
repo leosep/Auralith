@@ -24,13 +24,13 @@ from your files.
 
 ## Install
 
-Download or build `Auralith-Setup.msi` and run it. The installer places Auralith under
-`Program Files\Auralith`, adds a Start menu shortcut, and registers it in
-Add/Remove Programs.
+[**Download Auralith-Setup.msi**](https://github.com/leosep/Auralith/releases/download/v1.0.0/Auralith-Setup.msi) — 56.9 MB, Windows 10/11 x64.
 
-```
-installer\bin\x64\Release\Auralith-Setup.msi
-```
+Run the MSI and Auralith is installed under `Program Files\Auralith` with a Start menu
+shortcut and an entry in Add/Remove Programs. All releases live on the
+[releases page](https://github.com/leosep/Auralith/releases).
+
+If you build it yourself, the MSI lands at `installer\bin\x64\Release\Auralith-Setup.msi`.
 
 > Unsigned build: SmartScreen may ask for confirmation the first time.
 
