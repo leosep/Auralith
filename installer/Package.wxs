@@ -1,5 +1,5 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
-  <Package Name="Auralith" Manufacturer="Auralith" Version="1.0.0"
+  <Package Name="Auralith" Manufacturer="Auralith" Version="1.0.1"
            UpgradeCode="C5EC1FDC-13D9-46E7-A612-9E3D58D39F34" Scope="perMachine">
     <MajorUpgrade DowngradeErrorMessage="A newer version of Auralith is already installed." />
     <MediaTemplate EmbedCab="yes" />

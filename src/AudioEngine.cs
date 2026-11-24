@@ -31,17 +31,8 @@ public sealed class AudioEngine : IDisposable
         Stop();
         reader = new AudioFileReader(path) { Volume = Volume };
         eq = new Equalizer(reader, bands);
-        try
-        {
-            output = Create(Exclusive);
-        }
-        catch when (Exclusive)
-        {
-            // Device refused exclusive format: fall back to shared mode.
-            Exclusive = false;
-            output = Create(false);
-        }
-        output.PlaybackStopped += (s, _) => { if (ReferenceEquals(s, output)) Ended?.Invoke(); };
+        // The output device is only opened on Play(), so a restored paused session
+        // does not hold the sound card (important in exclusive mode).
     }
 
     WasapiOut Create(bool exclusive)
@@ -56,7 +47,26 @@ public sealed class AudioEngine : IDisposable
         catch { o.Dispose(); throw; }
     }
 
-    public void Play() => output?.Play();
+    public void Play()
+    {
+        if (reader == null) return;
+        if (output == null)
+        {
+            try
+            {
+                output = Create(Exclusive);
+            }
+            catch when (Exclusive)
+            {
+                // Device refused exclusive format: fall back to shared mode.
+                Exclusive = false;
+                output = Create(false);
+            }
+            output.PlaybackStopped += (s, _) => { if (ReferenceEquals(s, output)) Ended?.Invoke(); };
+        }
+        output.Play();
+    }
+
     public void Pause() => output?.Pause();
 
     public void Stop()

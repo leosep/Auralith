@@ -548,9 +548,9 @@
                             ToolTip="Add files (Ctrl+O)" AutomationProperties.Name="Add files"/>
                     <Button Content="Clear" Style="{StaticResource Pill}" Click="Clear_Click"
                             AutomationProperties.Name="Clear playlist"/>
-                    <ToggleButton x:Name="EqBtn" Content="EQ" Style="{StaticResource Pill}" Click="Eq_Click"
+                    <ToggleButton x:Name="EqBtn" Content="EQ" Style="{StaticResource Pill}" Checked="Eq_Click" Unchecked="Eq_Click"
                                   AutomationProperties.Name="Equalizer"/>
-                    <ToggleButton x:Name="ExclBtn" Content="Exclusive" Style="{StaticResource Pill}" Click="Excl_Click"
+                    <ToggleButton x:Name="ExclBtn" Content="Exclusive" Style="{StaticResource Pill}" Checked="Excl_Click" Unchecked="Excl_Click"
                                   AutomationProperties.Name="WASAPI exclusive mode"
                                   ToolTip="WASAPI exclusive: bit-perfect output that bypasses the Windows mixer"/>
                 </StackPanel>

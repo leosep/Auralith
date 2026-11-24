@@ -9,12 +9,27 @@ from your files.
 ## Features
 
 - **WASAPI output** — shared mode by default, one-click **exclusive** mode for bit-perfect playback that bypasses the Windows mixer (falls back to shared automatically if the device is busy).
-- **10-band equalizer** — 31 Hz → 16 kHz, ±12 dB per band, double-click a band to reset.
+- **Remembers your session** — the queue, last track and position, volume, EQ curve, shuffle/repeat and output mode all come back when you reopen the app.
+- **10-band equalizer** — 31 Hz → 16 kHz, ±12 dB per band, double-click a band (or press Reset) to flatten it.
 - **Real metadata** — title, artist, album, year, duration, format, and embedded cover art via TagLib#.
 - **Album art card** — animated now-playing glow, live seek bar, and keyboard-friendly transport.
 - **Queue that behaves** — shuffle, repeat off/all/one, per-track durations, current-track indicator, drag & drop files or whole folders.
 - **Format support** — MP3, FLAC, WAV, AIFF, M4A/AAC, WMA, OGG (Windows Media Foundation).
 - **Feels native** — dark aurora theme, custom sliders and toggles, animated equalizer logo, and a proper app icon in the taskbar, Start menu, and Add/Remove Programs.
+
+## What exclusive mode does
+
+Normally Windows plays audio in **shared** mode: the system mixer resamples the stream,
+mixes in other apps, and can apply device enhancements. **Exclusive** mode asks WASAPI for
+the output device directly, so Auralith sends the track's samples at their own format with
+no resampling or mixing — bit-perfect output.
+
+The trade-off: while Auralith is playing in exclusive mode, other apps cannot play sound on
+that device. If the device or driver refuses the format, Auralith falls back to shared mode
+automatically and the chip flips back to `SHARED`.
+
+Auralith does not open the device until you press play, so a restored session sitting paused
+never blocks your other apps.
 
 ## Screenshots
 
@@ -24,7 +39,7 @@ from your files.
 
 ## Install
 
-[**Download Auralith-Setup.msi**](https://github.com/leosep/Auralith/releases/download/v1.0.0/Auralith-Setup.msi) — 56.9 MB, Windows 10/11 x64.
+[**Download Auralith-Setup.msi**](https://github.com/leosep/Auralith/releases/download/v1.0.1/Auralith-Setup.msi) — Windows 10/11 x64.
 
 Run the MSI and Auralith is installed under `Program Files\Auralith` with a Start menu
 shortcut and an entry in Add/Remove Programs. All releases live on the
