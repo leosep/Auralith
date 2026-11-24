@@ -1,0 +1,7 @@
+<Project Sdk="WixToolset.Sdk/7.0.1">
+  <PropertyGroup>
+    <OutputName>Auralith-Setup</OutputName>
+    <Platform>x64</Platform>
+    <DefineConstants>PublishDir=$(MSBuildThisFileDir)..\publish</DefineConstants>
+  </PropertyGroup>
+</Project>
